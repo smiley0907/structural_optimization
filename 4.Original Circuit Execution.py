@@ -6,10 +6,10 @@ original_execution = []
 
 for q in QUBIT_SIZES:
 
+    # Use the already characterized circuit
     circuit = transpile(
         original_circuits[q],
         simulator,
-        basis_gates=BASIS_GATES,
         optimization_level=0
     )
 
@@ -24,6 +24,7 @@ for q in QUBIT_SIZES:
     times = []
 
     for _ in range(MEASUREMENT_RUNS):
+
         result = simulator.run(
             circuit,
             shots=SHOTS
